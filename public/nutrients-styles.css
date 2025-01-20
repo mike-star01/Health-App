@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Gray background */
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-weight: bold;
+  }
+  
+  .intake-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .progress-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .label {
+    width: 100px;
+  }
+  
+  .progress-container {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #e0e0e0; /* Light gray background */
+    border-radius: 15px;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: black; /* Black bar that fills */
+    width: 0;
+    border-radius: 15px;
+    transition: width 0.25s ease;
+  }
+  
+  #proteinText, #carbsText, #fatsText, #vitaminsText {
+    white-space: nowrap;
+  }
+  
+  .dual-containers {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .box {
+    background-color: white;
+    padding: 20px;
+    flex: 1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h4 {
+    margin-top: 0;
+    text-align: left;
+  }
+  
+  .recommendations-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  

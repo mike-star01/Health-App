@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --progress: 0;
+            --size: 150px;
+            --stroke-color: #4CAF50;
+        }
+        .circular-progress-container {
+            width: var(--size);
+            height: var(--size);
+            position: relative;
+            margin: 0 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .circular-progress {
+            --radius: 40;
+            --circumference: calc(2 * 3.14159 * var(--radius));
+            width: 100%;
+            height: 100%;
+        }
+        .circular-progress circle {
+            stroke-width: 8;
+            fill: none;
+            stroke-linecap: round;
+            transform-origin: 50px 50px;
+        }
+        .circular-progress circle.bg {
+            stroke: #ddd;
+        }
+        .circular-progress circle.fg {
+            transform: rotate(-90deg);
+            stroke: var(--stroke-color);
+            stroke-dasharray: var(--circumference) var(--circumference);
+            stroke-dashoffset: var(--circumference);
+            transition: stroke-dashoffset 1.5s ease-in-out;
+        }
+        .progress-label {
+            font-size: calc(var(--size) * 0.1);
+            color: #333;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .progress-number {
+            font-size: calc(var(--size) * 0.15);
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #Protein .circular-progress circle.fg { --stroke-color: #FF6384; }
+        #Carbs .circular-progress circle.fg { --stroke-color: #36A2EB; }
+        #Fat .circular-progress circle.fg { --stroke-color: #FFCE56; }
+        #Sugar .circular-progress circle.fg { --stroke-color: #9966FF; }
+        #Vitamins .circular-progress circle.fg { --stroke-color: #4BC0C0; }
+
+        @media (max-width: 768px) {
+            :root {
+                --size: 100px;
+            }
+            .macros-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-base-100 p-6" data-theme="cupcake">
+    
+    <%- include('partials/navbar') %>
+
+    <!-- Keep all the existing HTML structure the same until the SVG parts -->
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-center">Fitness Dashboard</h2>
+
+        <div class="flex justify-center items-center gap-4 mb-8">
+            <input 
+                type="text" 
+                id="fname" 
+                placeholder="What did you eat?" 
+                class="input input-bordered w-full max-w-xs"
+            />
+            <button id="add-food-btn" class="btn btn-primary">
+                Add
+            </button>
+        </div>
+
+        <div class="card bg-base-200 shadow-xl mb-8">
+            <div class="card-body">
+                <h3 class="card-title text-xl mb-4">Macros</h3>
+                <div class="flex justify-around items-center macros-container">
+                    <!-- Updated SVG circles with proper attributes -->
+                    <div class="circular-progress-container" id="Protein">
+                        <div class="progress-label">Protein</div>
+                        <svg viewBox="0 0 100 100" class="circular-progress">
+                            <circle class="bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="fg" cx="50" cy="50" r="40"></circle>
+                        </svg>
+                        <div class="progress-number" id="p-percent">0%</div>
+                    </div>
+                    <div class="circular-progress-container" id="Carbs">
+                        <div class="progress-label">Carbs</div>
+                        <svg viewBox="0 0 100 100" class="circular-progress">
+                            <circle class="bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="fg" cx="50" cy="50" r="40"></circle>
+                        </svg>
+                        <div class="progress-number" id="c-percent">0%</div>
+                    </div>
+                    <div class="circular-progress-container" id="Fat">
+                        <div class="progress-label">Fat</div>
+                        <svg viewBox="0 0 100 100" class="circular-progress">
+                            <circle class="bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="fg" cx="50" cy="50" r="40"></circle>
+                        </svg>
+                        <div class="progress-number" id="f-percent">0%</div>
+                    </div>
+                    <div class="circular-progress-container" id="Sugar">
+                        <div class="progress-label">Sugar</div>
+                        <svg viewBox="0 0 100 100" class="circular-progress">
+                            <circle class="bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="fg" cx="50" cy="50" r="40"></circle>
+                        </svg>
+                        <div class="progress-number" id="s-percent">0%</div>
+                    </div>
+                    <div class="circular-progress-container" id="Vitamins">
+                        <div class="progress-label">Vitamins</div>
+                        <svg viewBox="0 0 100 100" class="circular-progress">
+                            <circle class="bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="fg" cx="50" cy="50" r="40"></circle>
+                        </svg>
+                        <div class="progress-number" id="v-percent">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keep the rest of your HTML exactly the same -->
+        <!-- Daily Overview Section -->
+        <div class="card bg-base-200 shadow-xl mb-8">
+            <div class="card-body">
+                <h3 class="card-title text-xl mb-4">Overview</h3>
+                <div class="flex flex-col md:flex-row justify-around">
+                    <div class="w-full max-w-md">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="w-full max-w-md">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meals Section -->
+        <div class="card bg-base-200 shadow-xl">
+            <div class="card-body">
+                <h3 class="card-title text-xl mb-4">Today's Meals</h3>
+                <div class="flex gap-4 mb-4">
+                    <input 
+                        type="text" 
+                        id="newItem" 
+                        placeholder="Enter a new meal" 
+                        class="input input-bordered w-full"
+                    />
+                    <button 
+                        id="addButton" 
+                        class="btn btn-primary"
+                    >
+                        Add Meal
+                    </button>
+                </div>
+                <ul id="itemList" class="list-disc pl-5">
+                    <li>Steak and Eggs</li>
+                    <li>Pancakes and Bacon with Eggs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = "N5dWTX+Cx5yMpwC3tVR/Jw==E2Wzsqk4eJY7pwVQ";
+        const apiUrl = 'https://api.calorieninjas.com/v1/nutrition?query=';
+
+        function updateProgress(circleId, progressValue, percentId) {
+            const circle = document.getElementById(circleId);
+            if (circle) {
+                const progressCircle = circle.querySelector('.fg');
+                const percentElement = document.getElementById(percentId);
+                
+                const radius = 40;
+                const circumference = 2 * Math.PI * radius;
+                
+                const offset = circumference - (progressValue / 100 * circumference);
+                
+                progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+                progressCircle.style.strokeDashoffset = offset;
+                
+                percentElement.style.opacity = '0';
+                setTimeout(() => {
+                    percentElement.textContent = `${Math.round(progressValue)}%`;
+                    percentElement.style.opacity = '1';
+                }, 300);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            ['Protein', 'Carbs', 'Fat', 'Sugar', 'Vitamins'].forEach(id => {
+                updateProgress(id, 0, `${id.charAt(0).toLowerCase()}-percent`);
+            });
+
+            function addFoodItem() {
+                const query = document.getElementById("fname");
+                const foodItem = query.value.trim();
+
+                if (foodItem) {
+                    fetch(apiUrl + foodItem, {
+                        headers: { 'X-Api-Key': API_KEY }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Error: ${response.status} ${response.statusText}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        let totalProtein = 0;
+                        let totalCarbs = 0;
+                        let totalFat = 0;
+                        let totalSugar = 0;
+                        let totalVitamins = 0;
+
+                        data.items.forEach(item => {
+                            // Sum up the macros
+                            totalProtein += item.protein_g || 0;
+                            totalCarbs += item.carbohydrates_total_g || 0;
+                            totalFat += item.fat_total_g || 0;
+                            totalSugar += item.sugar_g || 0;
+                            totalVitamins += item.sodium_mg / 10 || 0;
+
+                            // Add each item to the meal list
+                            const li = document.createElement('li');
+                            li.textContent = `${item.name} (${item.calories.toFixed(1)} cal)`;
+                            document.getElementById('itemList').appendChild(li);
+                        });
+
+                        // Update progress circles with the totals
+                        updateProgress('Protein', Math.min(Math.round(totalProtein), 100), 'p-percent');
+                        updateProgress('Carbs', Math.min(Math.round(totalCarbs), 100), 'c-percent');
+                        updateProgress('Fat', Math.min(Math.round(totalFat), 100), 'f-percent');
+                        updateProgress('Sugar', Math.min(Math.round(totalSugar), 100), 's-percent');
+                        updateProgress('Vitamins', Math.min(Math.round(totalVitamins), 100), 'v-percent');
+
+                        // Clear the input field
+                        query.value = '';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("Could not fetch nutrition data. Please try again.");
+                    });
+                } else {
+                    alert("Please enter a food item.");
+                }
+            }
+
+
+            const addButton = document.getElementById("add-food-btn");
+            addButton.addEventListener("click", addFoodItem);
+
+            // Initialize charts
+            new Chart(document.getElementById('barChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Calories', 'Protein', 'Carbs', 'Fat'],
+                    datasets: [{
+                        label: 'Nutritional Intake',
+                        data: [2000, 820, 1050, 400],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)'
+                        ]
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    plugins: {
+                        title: { 
+                            display: true, 
+                            text: 'Daily Nutrition' 
+                        }
+                    }
+                }
+            });
+            
+            const lineValues = [100,200,300,400,500,600,700,800,900,1000];
+            new Chart("lineChart", {
+                type: "line",
+                data: {
+                    labels: lineValues,
+                    datasets: [{ 
+                        label: "Intake",
+                        data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                        borderColor: "mediumpurple",
+                        fill: false
+                    }, { 
+                        label: "Expenditure",
+                        data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+                        borderColor: "lightsteelblue",
+                        fill: false
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {display: true}
+                    }
+                }
+            });
+        });
+
+        //script to add item to list
+
+        // JavaScript function to add an item to the list
+        function addItem() {
+            // Get the value of the input field
+            var newItem = document.getElementById("newItem").value.trim();
+
+            if (newItem) {
+                // Create a new list item element
+                var li = document.createElement("li");
+
+                // Set the text of the list item
+                li.textContent = newItem;
+
+                // Append the new item to the unordered list
+                document.getElementById("itemList").appendChild(li);
+
+                // Clear the input field
+                document.getElementById("newItem").value = '';
+            } else {
+                alert("Please enter a meal name.");
+            }
+        }
+
+        // Attach the event listener when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Attach event listener for the "Add Meal" button
+            const addMealButton = document.getElementById("addButton");
+            addMealButton.addEventListener("click", addItem);
+        });
+
+
+    </script>
+</body>
+</html>

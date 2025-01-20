@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Bar</title>
+  <link rel="stylesheet" href="nutrients-styles.css">
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    
+  <div class="container">
+    <h1>Nutrients & Targets</h1>
+
+    <!-- White container for progress bars and nutrient intake text -->
+    <div class="intake-container">
+      <h3>Nutrient Intake</h3>
+
+      <!-- Protein -->
+      <div class="progress-wrapper">
+        <span class="label">Protein</span>
+        <div class="progress-container">
+          <div class="progress-bar" id="Protein"></div>
+        </div>
+        <span id="proteinText">30%</span>
+      </div>
+
+      <!-- Carbs -->
+      <div class="progress-wrapper">
+        <span class="label">Carbs</span>
+        <div class="progress-container">
+          <div class="progress-bar" id="Carbs"></div>
+        </div>
+        <span id="carbsText">0%</span>
+      </div>
+
+      <!-- Fats -->
+      <div class="progress-wrapper">
+        <span class="label">Fats</span>
+        <div class="progress-container">
+          <div class="progress-bar" id="Fats"></div>
+        </div>
+        <span id="fatsText">0%</span>
+      </div>
+
+      <!-- Vitamins -->
+      <div class="progress-wrapper">
+        <span class="label">Vitamins</span>
+        <div class="progress-container">
+          <div class="progress-bar" id="Vitamins"></div>
+        </div>
+        <span id="vitaminsText">0%</span>
+      </div>
+    </div>
+
+    <!-- Two white containers side by side -->
+    <div class="dual-containers">
+      <div class="box" id="customize-targets">
+        <h4>Customize Targets</h4>
+
+        <div class="progress-wrapper">
+          <span class="label">Vitamins</span>
+          <div class="progress-container">
+            <div class="progress-bar" id="Vitamins"></div>
+          </div>
+          <span id="vitaminsText">0%</span>
+        </div>
+
+        <div class="progress-wrapper">
+          <span class="label">Vitamins</span>
+          <div class="progress-container">
+            <div class="progress-bar" id="Vitamins"></div>
+          </div>
+          <span id="vitaminsText">0%</span>
+        </div>
+
+        <div class="progress-wrapper">
+          <span class="label">Vitamins</span>
+          <div class="progress-container">
+            <div class="progress-bar" id="Vitamins"></div>
+          </div>
+          <span id="vitaminsText">0%</span>
+        </div>
+
+        <div class="progress-wrapper">
+          <span class="label">Vitamins</span>
+          <div class="progress-container">
+            <div class="progress-bar" id="Vitamins"></div>
+          </div>
+          <span id="vitaminsText">0%</span>
+        </div>
+
+      </div>
+
+      <div class="box" id="recent-meals-breakdown">
+        <h4>Recent Meals Breakdown</h4>
+        <ul>
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- White container for Nutrition Recommendations -->
+    <div class="recommendations-container">
+      <h4>Nutrition Recommendations</h4>
+
+      <ul>
+        <li>Eat more protien</li>
+        <li>Drink more water</li>
+        <li>Take a shower</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function setProgress(percentId, percentText, percentage) {
+      const progressBar = document.getElementById(percentId);
+      const progressText = document.getElementById(percentText);
+
+      progressBar.style.width = percentage + "%";
+      progressText.textContent = percentage + "%";
+    }
+
+    // Set progress for each nutrient
+    setProgress("Protein", "proteinText", 80);
+    setProgress("Carbs", "carbsText", 40);
+    setProgress("Fats", "fatsText", 50);
+    setProgress("Vitamins", "vitaminsText", 20);
+  </script>
+</body>
+</html>

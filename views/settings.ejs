@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/settings-style.css">
+    
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    
+    
+
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openSetting(event, 'dashboard')" id="defaultOpen">Dashboard</button>
+        <button class="tablinks" onclick="openSetting(event, 'goals')">Goals</button>
+        <button class="tablinks" onclick="openSetting(event, 'profile')">Profile</button>
+        <button class="tablinks" onclick="openSetting(event, 'preferences')">Preferences</button>
+        <button class="tablinks" onclick="openSetting(event, 'help')">Help & Support</button>
+    </div>
+
+    <div id="dashboard" class="tabcontent">
+        <div class="dashboard-container">
+            <h3>Dashboard Customization</h3>
+
+            <div class="visibility">
+                <h4>Visibility</h4>
+
+                <div class="setting-option">
+                    <p>Show calorie intake</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-option">
+                    <p>Show step count</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-option">
+                    <p>Show sleep data</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-option">
+                    <p>Show heart rate</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-option">
+                    <p>Show workout summary</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="appearance">
+                <h3>Appearance</h3>
+                <div class="setting-option">
+                    <p>Dark Mode</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="chart-view">
+                <h3>Default Chart View</h3>
+                <select name="language" id="language">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly" disabled>Monthly</option>
+                    <option value="yearly" selected>Yearly</option>
+                </select>
+            </div>
+
+        </div> <!--End of Dashboard container-->
+    </div> <!--End of Dashboard Tab-->
+
+    <div id="goals" class="tabcontent">
+        <div class="goals-container">
+
+            <h3>Goals and Targets</h3>
+
+            <div class="weight">
+
+                <h4>Weight Goal</h4>
+
+                <div class="long-counter">
+                    <input type="number" class="style-long-counter" placeholder="Target Weight">
+                    <input type="submit" class="set-button" value="Set">
+                </div>
+
+                <div class="counter">
+                    <p>Target Date</p>
+                    <input type="date" id="date" name="date">
+                    <input type="submit" class="set-button" value="Set">
+                </div>
+            </div>
+
+            <div class="calorie-burn">
+
+                <h4>Daily Calorie Burn</h4>
+
+                <div class="long-counter">
+                    <input type="number" class="style-long-counter" placeholder="Calorie Target">
+                    <p>calories</p>
+                </div>
+
+                <div class="setting-option">
+                    <p>Adaptive Recommendations</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="nutrient-intake">
+
+                <h4>Nutrient Intake Goals</h4>
+
+                <div class="counter">
+                    <p>Protein</p>
+                    <input type="number" class="style-counter" placeholder="grams">
+                </div>
+
+                <div class="counter">
+                    <p>Carbs</p>
+                    <input type="number" class="style-counter" placeholder="grams">
+                </div>
+
+                <div class="counter">
+                    <p>Fats</p>
+                    <input type="number" class="style-counter" placeholder="grams">
+                </div>
+
+                <div class="counter">
+                    <p>Fiber</p>
+                    <input type="number" class="style-counter" placeholder="grams">
+                </div>
+            </div>
+
+            <div class="daily-movement">
+
+                <h4>Daily Movement Goals</h4>
+
+                <div class="counter">
+                    <p>Steps</p>
+                    <input type="number" class="style-counter" placeholder="steps">
+                </div>
+
+                <div class="counter">
+                    <p>Active minutes</p>
+                    <input type="number" class="style-counter" placeholder="minutes">
+                </div>
+            </div>
+
+            <div class="sleep">
+
+                <h4>Sleep Goals</h4>
+
+                <div class="counter">
+                    <p>Sleep Duration</p>
+
+                    <div class="input-group">
+                        <input type="number" class="style-counter" placeholder="hours">
+                        <input type="number" class="style-counter" placeholder="minutes">
+                    </div>
+                </div>
+
+                <div class="counter">
+                    <p>Bedtime</p>
+
+                    <div class="input-group">
+                        <input type="number" class="style-counter" placeholder="hours">
+                        <input type="number" class="style-counter" placeholder="minutes">
+                    </div>
+                </div>
+
+                <div class="counter">
+
+                    <p>Wake time</p>
+                    <div class="input-group">
+                        <input type="number" class="style-counter" placeholder="hours">
+                        <input type="number" class="style-counter" placeholder="minutes">
+                    </div>
+
+                </div>
+            </div> 
+
+        </div><!--End of Goals container-->
+    </div> <!--End of Goals Tab-->
+
+
+    <div id="profile" class="tabcontent">
+
+        <div class="profile-container">
+
+            <div class="section-padding">
+                <h2>Profile and Account</h2>
+            
+                <!-- Profile and Change Picture button wrapper -->
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <!-- Profile icon -->
+                    <i data-lucide="user-round" class="icon-large profile-icon"></i>
+            
+                    <!-- Change Picture button -->
+                    <button type="button" class="button-1" style="margin-left: 10px;">
+                        <i data-lucide="upload" class="icon-small"></i>
+                        Change Picture
+                    </button>
+                </div>
+            
+                <!-- Form wrapper -->
+                <div class="form-wrapper">
+                    <div class="form-row">
+                        <!-- Name Input -->
+                        <div class="form-column">
+                            <label for="fname">Name</label>
+                            <input type="text" id="fname" name="fname" placeholder="Your Name">
+                        </div>
+            
+                        <!-- Email Input -->
+                        <div class="form-column">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Eva@email.com">
+                        </div>
+                    </div>
+            
+                    <div class="form-row">
+                        <!-- Date of Birth Input -->
+                        <div class="form-column">
+                            <label for="date">Date of Birth</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+            
+                        <!-- Sex Input -->
+                        <div class="form-column">
+                            <label for="sex">Sex</label>
+                            <select name="sex" id="sex">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+            
+                    <div class="form-row">
+                      <div class="form-column">
+                          <label for="height">Height</label>
+                          <input type="text" id="height-feet" name="height-feet" placeholder="Feet" style="width: 160px;"> <!-- Smaller width -->
+                          <input type="text" id="height-inches" name="height-inches" placeholder="Inches" style="width: 160px;"> <!-- Smaller width -->
+                      </div>
+                  </div>
+                  
+                </div>
+            
+                <hr>
+            
+                <div class="security">
+                    <h3>Security</h3>
+                    <button type="button" class="button-1">Change password</button>
+                    <div class="setting-option">
+                        <p>Two Factor Authentication</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            
+                <hr>
+            
+                <div class="privacy">
+                    <h3>Privacy</h3>
+                    <div class="setting-option">
+                        <p>Make Profile Public</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="setting-option">
+                        <p>Show Activity With Friends</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <button type="button" class="button-1">Manage Data Sharing</button>
+                </div>
+            
+                <hr>
+            
+                <div class="acc-actions">
+                    <h3>Account Actions</h3>
+                    <button type="button" class="button-1">Download My Data</button>
+                    <button type="button" class="button-red">Delete Account</button>
+                </div>
+            </div>
+            
+            
+              <!-- Include Lucide CDN -->
+              <script src="https://unpkg.com/lucide@latest"></script>
+              <script>
+                window.onload = function() {
+                    lucide.createIcons();
+                }
+              </script>
+            
+
+        </div>
+
+    </div> <!--End of Profile Tab-->
+
+    <div id="preferences" class="tabcontent">
+
+        <div class="preferences-container">
+        
+
+            <h1>Preferences</h1>
+
+            <h4>
+                Measurement Units
+            </h4>
+        
+            <form action="/action_page.php">
+                <input type="radio" id="html" name="fav_language" value="metric">
+                <label for="html">Metirc</label><br>
+                <input type="radio" id="css" name="fav_language" value="imperial">
+                <label for="html">Imperial</label><br>
+        
+            </form>
+        
+        
+            <hr>
+        
+        
+        
+            <h4>
+                AI and Personalization
+            </h4>
+        
+        
+            <div class="setting-option">
+                <p>Enable AI-powered insights</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+            <div class="form-column">
+                <label for="ai-freq">AI Interaction Frequency</label>
+                <select name="ai-freq" id="ai-freq">
+                    <option value="minimal">Minimal</option>
+                    <option value="supportive">Supportive</option>
+                    <option value="coach">Coach</option>
+        
+                </select>
+            </div>
+        
+            <div class="form-column">
+                <label for="ai-personality">AI Personality</label>
+                <select name="ai-personality" id="ai-personality">
+                    <option value="male">Motivational</option>
+                    <option value="female">Analytical</option>
+                    <option value="female">Friendly</option>
+                    <option value="female">Strict</option>
+        
+                </select>
+            </div>
+        
+            <button type="button" class="button-1">Manage AI Data Usage</button>
+        
+        
+            <hr>
+        
+        
+            <h4> Accessibility</h4>
+        
+            <div class="form-column">
+                <label for="fontsz">Font Size</label>
+                <select name="fontsz" id="fontsz">
+                    <option value="male">Small</option>
+                    <option value="female">Medium</option>
+                    <option value="female">Large</option>
+                </select>
+            </div>
+        
+            <div class="setting-option">
+                <p>High Contrast</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+            <div class="setting-option">
+                <p>Dark Mode</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+        
+            <hr>
+        
+        
+        
+            <h4> App behavior </h4>
+        
+            <div class="form-column">
+                <label for="default-land">Default Landing Page</label>
+                <select name="default-land" id="default-land">
+                    <option value="defualt">Default</option>
+                    <option value="work-focus">Workout Focused</option>
+                    <option value="nutrition-focus">Nutrition Focused</option>
+        
+                </select>
+            </div>
+        
+            <div class="form-column">
+                <label for="logout-timer">Auto-logout timer</label>
+                <select name="logout-timer" id="logout-timer">
+                    <option value="on-refresh">On refresh</option>
+                    <option value="30">30 min</option>
+                    <option value="hour">1 hour</option>
+                    <option value="day">1 day</option>
+                    <option value="week">1 week</option>
+                    <option value="never">Never</option>
+        
+        
+                </select>
+            </div>
+        
+        
+            <div class="setting-option">
+                <p>Enable Offline Mode</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+        
+            <hr>
+        
+        
+            <h4> Social and Sharing</h4>
+        
+            <div class="setting-option">
+                <p>Allow Friend Requests</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+            <div class="setting-option">
+                <p>Show Activity in Feed</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+            <div class="form-column">
+                <label for="post-priv">Default Post Privacy</label>
+                <select name="post-priv" id="post-priv">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+            </div>
+        
+        
+            <button type="button" class="button-1">Manage Connected Social Accounts</button>
+        
+            <button type="button" class="button-1">Manage Friend List</button>
+        
+        
+            <hr>
+        
+        
+            <h4> Notifications </h4>
+        
+            <div class="setting-option">
+                <p>Weekly Summary</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+            <div class="setting-option">
+                <p>New Features</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+            <div class="setting-option">
+                <p>Personalized Tips</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        
+        
+            <hr>
+        
+        
+            <h4> Data Management </h4>
+        
+            <button type="button" class="button-1">Backup Data</button>
+        
+            <button type="button" class="button-1">Restore Data</button>
+        
+        
+            <button type="button" class="button-1">Manage Historical Data</button>
+        
+            <button type="button" class="button-red">Delete Data</button>
+        
+
+
+        </div>
+    </div> <!--End of Prefences Tab-->
+
+    <div id="help" class="tabcontent">
+        <div class="help-container">
+
+            <h1>Help & Support</h1>
+
+
+            <h4>Frequently Asked Questions</h4>
+
+            <div class="dropdown" onclick="toggleDropdown('change_goals_arrow', 'change_goals_content')">
+            <span class="question">How can I change my goals?</span>
+            <span class="arrow down" id="change_goals_arrow"><i data-lucide="chevron-down"></i></span>
+            </div>
+            <div class="dropdown-content" id="change_goals_content">
+            <p>To change your goals, navigate to the goals section in your settings, and update your preferences.</p>
+            </div>
+
+            <div class="dropdown" onclick="toggleDropdown('export_data_arrow', 'export_data_content')">
+            <span class="question">How do I export my data?</span>
+            <span class="arrow down" id="export_data_arrow"><i data-lucide="chevron-down"></i></span>
+            </div>
+            <div class="dropdown-content" id="export_data_content">
+            <p>To export your data, go to the settings page, select "Export Data," and choose the desired format. Your data will be downloaded as a file for safekeeping.</p>
+            </div>
+
+            <div class="dropdown" onclick="toggleDropdown('connect_device_arrow', 'connect_device_content')">
+            <span class="question">How do I connect to a new device?</span>
+            <span class="arrow down" id="connect_device_arrow"><i data-lucide="chevron-down"></i></span>
+            </div>
+            <div class="dropdown-content" id="connect_device_content">
+            <p>To connect to a new device, open the settings, go to "Device Connections," and follow the prompts to add a new device.</p>
+            </div>
+
+            <hr>
+
+            <h4>Tutorials</h4>
+            <p><a href="#" class="tutorial">Getting Started Guide</a></p>
+            <p><a href="#" class="tutorial">How to Use Dashboard</a></p>
+            <p><a href="#" class="tutorial">Setting Up Your First Goal</a></p>
+
+            <hr>
+
+            <h4>Contact Support / Feedback</h4>
+
+            <p>Feel free to contact or let us know what you think!</p>
+
+            <textarea id="w3review" name="w3review" rows="4" cols="50" placeholder="Text Here..."></textarea>
+
+            <br>
+
+            <button type="button" class="button-1">Submit</button>
+
+            <script>
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            function toggleDropdown(arrowId, contentId) {
+                const dropdownContent = document.getElementById(contentId);
+                const dropdownArrow = document.getElementById(arrowId);
+
+                if (dropdownContent.style.height === "0px" || !dropdownContent.style.height) {
+                // Expanding
+                dropdownContent.style.opacity = "1";
+                dropdownContent.style.height = dropdownContent.scrollHeight + "px";
+                dropdownContent.classList.remove("show");
+                dropdownArrow.classList.remove("down");
+                dropdownArrow.classList.add("up");
+                } else {
+                // Collapsing
+                dropdownContent.style.opacity = "0";
+                dropdownContent.style.height = "0";
+                setTimeout(() => {
+                    dropdownContent.classList.add("show");
+                }, 300);
+                dropdownArrow.classList.remove("up");
+                dropdownArrow.classList.add("down");
+                }
+            }
+            </script>
+
+
+        </div>
+    </div> <!--End of Help Tab-->
+
+
+    <script>
+        function openSetting(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+    
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    
+    </script>
+
+</body>
+</html>
