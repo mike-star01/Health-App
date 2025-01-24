@@ -1,0 +1,159 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px; /* Increased padding */
+    cursor: pointer;
+    font-size: 16px; /* Increased font-size */
+}
+
+.discard-btn {
+    background-color: #ffcccc;
+    color: #900;
+}
+
+.save-btn {
+    background-color: #cce5ff;
+    color: #007bff;
+}
+
+.add-btn {
+    background-color: #d4edda;
+    color: #28a745;
+}
+
+main {
+    padding: 20px 30px;
+}
+
+.exercise-section {
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold; /* Bold for better prominence */
+}
+
+.exercise-table {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;  /* Adjusted padding for more space */
+}
+
+.row.header {
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.row input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.success-btn {
+    background-color: #d4edda;
+    color: #28a745;
+}
+
+.remove-btn {
+    background-color: #f8d7da;
+    color: #dc3545;
+}
+
+.add-set {
+    background-color: #f4f4f9;
+    border: 1px solid #ddd;
+    color: #333;
+    margin-top: 15px;
+    padding: 12px 20px; /* Increased padding */
+    cursor: pointer;
+    font-size: 16px; /* Increased font-size */
+}
+
+.add-set:hover {
+    background-color: #e2e6ea;  /* Hover effect for Add Set button */
+}
+
+.row.completed {
+    background-color: #d4edda; /* Light green background */
+    text-decoration: line-through; /* Optional: Add strike-through effect for completed sets */    
+    padding: 12px 0; /* Added padding for better spacing */
+    border-radius: 8px;  /* Optional: rounded edges for completed rows */
+}
+
+.selected-for-deletion {
+    background-color: #f8d7da; /* Light red background to indicate selection */
+    border: 1px solid #dc3545;
+    padding: 10px;  /* Added padding for better visual appeal */
+    border-radius: 8px;  /* Rounded corners for deletion rows */
+}
+
+button:hover {
+    opacity: 0.9;  /* Hover effect for buttons */
+}
+
+/* Style for pounds label and input field */
+.kg-container {
+    display: flex;
+    flex-direction: column;  /* Stack label and input vertically */
+    align-items: center;     /* Center align horizontally */
+}
+
+.kg-container label {
+    margin-bottom: 5px;  /* Space between label and input */
+    font-weight: bold;   /* Bold label */
+}
+
+.kg-input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
