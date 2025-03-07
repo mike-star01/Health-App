@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacroX</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        #showcase {
+            background-image: url('imgshowcase.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        #showcase h1 {
+            font-size: 3rem;
+            color: #000;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        #showcase p {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 2rem;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            font-size: 1rem;
+            text-decoration: none;
+            color: #000;
+            border: 2px solid #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .button:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        #section-a {
+            background: #f4f4f4;
+        }
+
+        #section-b {
+            background: #e2e2e2;
+        }
+
+        #section-c {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        #section-c div {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            padding: 1rem;
+            background: #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header id="showcase">
+        <h1>MacroX</h1>
+        <p>Time For Some Real Change</p>
+        <div class="button-container">
+            <a href="/login" class="button">Login</a>
+            <a href="/sign-up" class="button">Sign Up</a>
+        </div>
+    </header>
+    <section id="section-a">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Ipsa dicta illo adipisci fuga! Accusamus exercitationem ratione voluptatem dignissimos illum! 
+            Cumque, aperiam unde? Dolores explicabo modi consequuntur harum cupiditate fugiat corporis, 
+            consequatur repellat voluptatem eum, voluptates deleniti ullam iste distinctio ea, 
+            iusto quas deserunt aspernatur et magnam quaerat laboriosam excepturi rem. 
+            Minima dolorem minus ab expedita possimus asperiores qui reprehenderit exercitationem, sapiente ad, 
+            mollitia unde voluptates illo quia accusamus sequi rem quae doloremque? Accusamus vitae provident aspernatur quia, 
+            amet numquam maiores illo labore deserunt eaque earum totam nemo, a perspiciatis architecto dolorem incidunt 
+            laudantium nobis eius nulla quod ut nesciunt ea?
+        </p>
+    </section>
+    <section id="section-b">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Ipsa dicta illo adipisci fuga! Accusamus exercitationem ratione voluptatem dignissimos illum! 
+            Cumque, aperiam unde? Dolores explicabo modi consequuntur harum cupiditate fugiat corporis, 
+            consequatur repellat voluptatem eum, voluptates deleniti ullam iste distinctio ea, 
+            iusto quas deserunt aspernatur et magnam quaerat laboriosam excepturi rem. 
+            Minima dolorem minus ab expedita possimus asperiores qui reprehenderit exercitationem, sapiente ad, 
+            mollitia unde voluptates illo quia accusamus sequi rem quae doloremque? Accusamus vitae provident aspernatur quia, 
+            amet numquam maiores illo labore deserunt eaque earum totam nemo, a perspiciatis architecto dolorem incidunt 
+            laudantium nobis eius nulla quod ut nesciunt ea?
+        </p>
+    </section>
+    <section id="section-c">
+        <div class="box-1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolor minima laborum, consectetur dolorem eos hic. 
+            Dolorem deserunt enim molestiae.
+        </div>
+        <div class="box-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolor minima laborum, consectetur dolorem eos hic. 
+            Dolorem deserunt enim molestiae.
+        </div>
+        <div class="box-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolor minima laborum, consectetur dolorem eos hic. 
+            Dolorem deserunt enim molestiae.
+        </div>
+    </section>
+</body>
+</html>
