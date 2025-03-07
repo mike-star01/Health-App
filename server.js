@@ -9,8 +9,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 
-// Route for the home page
+// Route for the landing page
 app.get('/', (req, res) => {
+  res.render('landing');       // Render the EJS template
+});
+
+
+// Route for the login page
+app.get('/login', (req, res) => {
+  res.render('login');       // Render the EJS template
+});
+
+// Route for the sign up page
+app.get('/sign-up', (req, res) => {
+  res.render('sign-up');       // Render the EJS template
+});
+
+// Route for the dashboard page
+app.get('/fitness', (req, res) => {
   res.render('fitness');       // Render the EJS template
 });
 

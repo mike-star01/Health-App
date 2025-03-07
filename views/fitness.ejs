@@ -80,6 +80,9 @@
     
     <%- include('partials/navbar') %>
 
+    <h1>Welcome <span id="userName"></span>!</h1>
+
+
     <!-- Keep all the existing HTML structure the same until the SVG parts -->
     <div class="container mx-auto">
         <h2 class="text-3xl font-bold mb-6 text-center">Fitness Dashboard</h2>
@@ -190,6 +193,10 @@
     <script>
         const API_KEY = "N5dWTX+Cx5yMpwC3tVR/Jw==E2Wzsqk4eJY7pwVQ";
         const apiUrl = 'https://api.calorieninjas.com/v1/nutrition?query=';
+
+        
+        document.getElementById('userName').textContent = sessionStorage.getItem('userName') || 'User';
+
 
         function updateProgress(circleId, progressValue, percentId) {
             const circle = document.getElementById(circleId);
